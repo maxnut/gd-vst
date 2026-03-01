@@ -1,4 +1,5 @@
 #include "plugin_manager.hpp"
+#include "Geode/utils/string.hpp"
 
 PluginManager::PluginManager(double sampleRate, int bufferSize) : m_sampleRate(sampleRate), m_bufferSize(bufferSize) {
     juce::addDefaultFormatsToManager(m_formatManager);
@@ -11,7 +12,7 @@ void PluginManager::scan() {
             juce::PluginDirectoryScanner scanner(
                 m_list,
                 *format,
-                juce::FileSearchPath(path.string()),
+                juce::FileSearchPath(geode::utils::string::pathToString(path)),
                 true,
                 juce::File(),
                 true
