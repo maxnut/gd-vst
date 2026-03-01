@@ -91,7 +91,8 @@ void init() {
     std::lock_guard<std::mutex> guard(lock);
     tooltipWindow = std::make_unique<juce::TooltipWindow>();
     activeManager = std::make_unique<ActivePluginManager>(manager.get());
-    activeManager->setSize(400, 300);
+    auto wsz = cocos2d::CCDirector::sharedDirector()->getWinSizeInPixels();
+    activeManager->setSize(wsz.width / 4.8f, wsz.height / 3.6f);
 
     hasJuce = true;
 }
