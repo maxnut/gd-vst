@@ -3,7 +3,7 @@ This mod allows you to modify the in-game audio with audio plugins!
 
 ## Usage
 
-Press the toggle keybind to open the plugin manager window (default keybind is V),
+Press the toggle keybind to open the plugin manager window (default keybind is Ctrl+P),
 then right click the window to add a new plugin.
 
 The mod will scan the plugin directory for any audio plugin.

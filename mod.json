@@ -13,7 +13,7 @@
 		"keybind": {
 			"type": "keybind",
 			"name": "Toggle Keybind",
-			"default": "V",
+			"default": "Ctrl+P",
 			"category": "universal"
 		}
 	},
