@@ -1,0 +1,23 @@
+{
+	"geode": "5.2.0",
+	"gd": {
+		"win": "2.2081"
+	},
+	"id": "maxnu.gdvst",
+	"name": "GD VST",
+	"version": "v1.0.0",
+	"developer": "maxnu",
+	"description": "Allows you to use audio plugins inside of GD.",
+	"tags": ["music", "joke", "offline"],
+	"settings": {
+		"keybind": {
+			"type": "keybind",
+			"name": "Toggle Keybind",
+			"default": "V",
+			"category": "universal"
+		}
+	},
+	"links": {
+		"source": "https://github.com/maxnut/gd-vst"
+	}
+}
