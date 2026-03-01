@@ -102,7 +102,7 @@ void ActivePluginManager::mouseDown(const juce::MouseEvent& e) {
         if(result == 0) return;
         
         if(!m_selectorWindow) {
-            auto sel = std::make_unique<Pluginselector>(m_manager, [&](size_t idx) {
+            auto sel = std::make_unique<PluginSelector>(m_manager, [&](size_t idx) {
                 newPlugin(idx);
                 m_selectorWindow->close();
                 toFront(true);
@@ -162,9 +162,6 @@ void ActivePluginManager::movePlugin(size_t idx, bool up) {
 
 juce::AudioPluginInstance* ActivePluginManager::getPlugin(size_t idx) {
     const auto& desc = m_manager->getPluginList().getTypes()[idx];
-    if(auto it = m_pluginMap.find(desc.createIdentifierString().toStdString()); it != m_pluginMap.end()) {
-        return it->second;
-    }
     auto res = m_manager->createPluginInstance(idx);
     if(!res) {
         geode::log::error("{}", res.unwrapErr());

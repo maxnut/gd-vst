@@ -4,18 +4,18 @@
 #include "juce_gui_basics/juce_gui_basics.h"
 #include "plugin_manager.hpp"
 
-class Pluginselector;
+class PluginSelector;
 
 class SelectorMenuModel : public juce::MenuBarModel {
 public:
-    SelectorMenuModel(Pluginselector* selector) : m_selector(selector) {}
+    SelectorMenuModel(PluginSelector* selector) : m_selector(selector) {}
 
     juce::StringArray getMenuBarNames() override;
     juce::PopupMenu getMenuForIndex(int index, const juce::String&) override;
     void menuItemSelected(int menuItemID, int) override;
 
 private:
-    Pluginselector* m_selector = nullptr;
+    PluginSelector* m_selector = nullptr;
 };
 
 class PluginEntry : public juce::Component {
@@ -34,9 +34,9 @@ private:
     HelpIcon m_icon;
 };
 
-class Pluginselector : public juce::Component {
+class PluginSelector : public juce::Component {
 public:
-    Pluginselector(PluginManager* manager, std::function<void(size_t)> callback);
+    PluginSelector(PluginManager* manager, std::function<void(size_t)> callback);
 
     void paint(juce::Graphics& g) override;
     void resized() override;

@@ -21,7 +21,7 @@ void PluginEntry::mouseDown(const juce::MouseEvent& e) {
     m_callback(m_idx);
 }
 
-Pluginselector::Pluginselector(PluginManager* manager, std::function<void(size_t)> callback) : m_manager(manager), m_callback(callback) {
+PluginSelector::PluginSelector(PluginManager* manager, std::function<void(size_t)> callback) : m_manager(manager), m_callback(callback) {
     addAndMakeVisible(m_viewport);
     m_viewport.setViewedComponent(&m_dummy, false);
     m_viewport.setScrollBarPosition(true, false);
@@ -32,11 +32,11 @@ Pluginselector::Pluginselector(PluginManager* manager, std::function<void(size_t
     setup();
 }
 
-void Pluginselector::paint(juce::Graphics& g) {
+void PluginSelector::paint(juce::Graphics& g) {
     g.fillAll(juce::Colours::darkgrey);
 }
 
-void Pluginselector::resized() {
+void PluginSelector::resized() {
     m_menuBar.setBounds(0, 0, getWidth(), 24);
     m_viewport.setBounds(0, 24, getWidth(), getHeight() - 24);
     m_dummy.setBounds(0, 24, getWidth() - (m_viewport.canScrollVertically() ? 6 : 0), 24 * m_entries.size());
@@ -46,7 +46,7 @@ void Pluginselector::resized() {
     }
 }
 
-void Pluginselector::setup() {
+void PluginSelector::setup() {
     for(auto& entry : m_entries) m_dummy.removeChildComponent(entry.get());
     m_entries.clear();
 

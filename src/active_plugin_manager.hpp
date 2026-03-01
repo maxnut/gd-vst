@@ -54,7 +54,6 @@ public:
     const std::atomic<std::shared_ptr<std::vector<std::shared_ptr<ActivePluginEntry>>>>& getActivePlugins() { return m_activePlugins; }
 
 private:
-    std::unordered_map<std::string, juce::AudioPluginInstance*> m_pluginMap;
     std::atomic<std::shared_ptr<std::vector<std::shared_ptr<ActivePluginEntry>>>> m_activePlugins;
     std::unique_ptr<Window> m_selectorWindow = nullptr;
     juce::Viewport m_viewport;
