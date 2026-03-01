@@ -13,6 +13,7 @@ public:
 
     void scan();
     geode::Result<juce::AudioPluginInstance*> createPluginInstance(size_t index);
+    void removePluginInstance(juce::AudioPluginInstance* plugin);
 
     void addSearchPath(const std::filesystem::path& path) { m_searchPaths.push_back(path); }
     void removeSearchPath(size_t index) { m_searchPaths.erase(m_searchPaths.begin() + index); }

@@ -141,7 +141,11 @@ void ActivePluginManager::removePlugin(size_t idx) {
     auto newList = std::make_shared<std::vector<std::shared_ptr<ActivePluginEntry>>>(*oldList);
     newList->erase(newList->begin()+idx);
     m_activePlugins.store(newList, std::memory_order_release);
-    removeChildComponent(oldList->at(idx).get());
+    auto plugin = oldList->at(idx).get();
+    plugin->m_pluginWindow = nullptr;
+    removeChildComponent(plugin);
+    m_manager->removePluginInstance(plugin->getPlugin());
+    geode::log::debug("{}", m_manager->getPluginInstances().size());
     repaint();
 }
 

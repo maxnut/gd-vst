@@ -56,3 +56,7 @@ geode::Result<juce::AudioPluginInstance*> PluginManager::createPluginInstance(si
     m_plugins.push_back(std::move(plugin));
     return ok;
 }
+
+void PluginManager::removePluginInstance(juce::AudioPluginInstance* plugin) {
+    m_plugins.erase(std::remove_if(m_plugins.begin(), m_plugins.end(), [plugin] (auto& p) { return p.get() == plugin; }));
+}
