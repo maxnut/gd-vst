@@ -18,11 +18,13 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(JUCE)
 
 FetchContent_Declare(
-    VST2SDK
+    vst2
     GIT_REPOSITORY https://github.com/R-Tur/VST_SDK_2.4/
     GIT_TAG 4610873
 )
-FetchContent_MakeAvailable(VST2SDK)
+FetchContent_MakeAvailable(vst2)
+
+message(STATUS "VST2SDK source dir: ${vst2_SOURCE_DIR}")
 
 project(gdvst VERSION 1.0.0)
 
@@ -30,7 +32,7 @@ file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS src/*.cpp)
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
 target_include_directories(${PROJECT_NAME} PRIVATE
-    ${VST2SDK_SOURCE_DIR}
+    ${vst2_SOURCE_DIR}
 )
 
 target_link_libraries(${PROJECT_NAME}
