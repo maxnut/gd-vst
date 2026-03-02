@@ -8,12 +8,31 @@ else()
 endif()
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
-add_subdirectory(JUCE)
+include(FetchContent)
+
+FetchContent_Declare(
+    JUCE
+    GIT_REPOSITORY https://github.com/juce-framework/JUCE
+    GIT_TAG 501c076
+)
+FetchContent_MakeAvailable(JUCE)
+
+FetchContent_Declare(
+    VST2SDK
+    GIT_REPOSITORY https://github.com/R-Tur/VST_SDK_2.4/
+    GIT_TAG 4610873
+)
+FetchContent_MakeAvailable(VST2SDK)
 
 project(gdvst VERSION 1.0.0)
 
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS src/*.cpp)
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
+
+target_include_directories(${PROJECT_NAME} PRIVATE
+    ${VST2SDK_SOURCE_DIR}
+)
+
 target_link_libraries(${PROJECT_NAME}
     juce::juce_core
     juce::juce_events

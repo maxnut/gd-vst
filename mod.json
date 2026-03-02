@@ -1,11 +1,11 @@
 {
-	"geode": "5.2.0",
+	"geode": "5.3.0",
 	"gd": {
 		"win": "2.2081"
 	},
 	"id": "maxnu.gdvst",
 	"name": "GD VST",
-	"version": "v1.0.0",
+	"version": "v1.0.2",
 	"developer": "maxnu",
 	"description": "Allows you to use audio plugins inside of GD.",
 	"tags": ["music", "joke", "offline"],
