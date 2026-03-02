@@ -1,4 +1,5 @@
 #include "window.hpp"
+#include "utils.hpp"
 
 Window::Window(juce::Component* cmp) : m_component(cmp) {
     addAndMakeVisible(m_component);
@@ -68,4 +69,9 @@ void Window::close() {
     if(m_onClose) m_onClose();
     juce::Desktop::getInstance().getMainMouseSource().forceMouseCursorUpdate();
     juce::Desktop::getInstance().getMainMouseSource().triggerFakeMove();
+}
+
+void Window::parentHierarchyChanged() {
+    if(!Utils::isOnWine() || !getPeer()) return;
+    getPeer()->setCurrentRenderingEngine(0);
 }

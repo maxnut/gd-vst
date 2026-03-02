@@ -17,6 +17,12 @@ inline bool isExclusiveFullscreen() {
     return view->getIsFullscreen() && !view->getIsBorderless();
 }
 
+inline bool isOnWine() {
+    HMODULE ntdll = GetModuleHandleW(geode::utils::string::utf8ToWide("ntdll.dll").c_str());
+	typedef void (*wine_get_host_version)(const char **sysname, const char **release);
+	return (wine_get_host_version)GetProcAddress(ntdll, "wine_get_host_version") != nullptr;
+}
+
 inline void* getWindowHandle() {
     if(isExclusiveFullscreen()) return nullptr;
     return WindowFromDC(wglGetCurrentDC());

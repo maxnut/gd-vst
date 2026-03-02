@@ -12,6 +12,7 @@ public:
     void paint(juce::Graphics& g) override;
     void mouseDown(const juce::MouseEvent& e) override;
     void mouseDrag(const juce::MouseEvent& e) override;
+    void parentHierarchyChanged() override;
 
     void setContent(juce::Component* component);
     void setContent(std::unique_ptr<juce::Component> component);
